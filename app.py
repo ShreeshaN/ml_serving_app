@@ -1,6 +1,22 @@
+# -*- coding: utf-8 -*-
+"""
+@created on: 1/23/20,
+@author: Shreesha N,
+@version: v0.0.1
+@system name: badgod
+Description: Start point of this serving app. Run this file to host this app on a host machine. It will launch itself
+                as a web server with multiple REST end points. Check documentation for REST end points.
+                We are gonna have fun! Take a chill pill and keep going!
+
+..todo::
+
+"""
+
 from flask import Flask
+from pl_src.controllers import train_controller
 
 app = Flask(__name__)
+app.register_blueprint(train_controller)
 
 
 @app.route('/')

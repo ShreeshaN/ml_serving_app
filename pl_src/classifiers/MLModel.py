@@ -4,24 +4,25 @@
 @author: Shreesha N,
 @version: v0.0.1
 @system name: badgod
-Description: Decision Tree classifier
+Description: This is an abstract parent class for any ML classifier we write. Any ML classifier should have its own class and
+                should inherit properties from this class.
 
-..todo:: Implement different cost functions and accuracy metrics suiting business needs.
+..todo::
 
 """
 
-from pl_src.classifiers.MLModel import MLModel
+from abc import ABC, abstractmethod
 
 
-class DecisionTreeClassifier(MLModel):
+class MLModel(ABC):
 
     def __init__(self):
         """
         Any pre-requisite initialisations required needs to be done here
         """
-        super().__init__()
-        print('Initialising Decision Tree')
+        pass
 
+    @abstractmethod
     def fit(self, x, y):
         """
         Train part of our algorithm
@@ -31,6 +32,7 @@ class DecisionTreeClassifier(MLModel):
         """
         pass
 
+    @abstractmethod
     def evaluate(self, x, y):
         """
         This method is to evaluate model on unseen data. To calculate validation accuracy.
@@ -40,6 +42,7 @@ class DecisionTreeClassifier(MLModel):
         """
         pass
 
+    @abstractmethod
     def predict(self, x):
         """
         Used to predict the results using the trained model.
@@ -48,6 +51,7 @@ class DecisionTreeClassifier(MLModel):
         """
         pass
 
+    @abstractmethod
     def cost_fn(self, x, y):
         """
         Optional cost function to evaluate trained model
@@ -57,6 +61,7 @@ class DecisionTreeClassifier(MLModel):
         """
         pass
 
+    @abstractmethod
     def accuracy(self, x, y):
         """
         Optional metric to evaluate trained model
@@ -66,6 +71,7 @@ class DecisionTreeClassifier(MLModel):
         """
         pass
 
+    @abstractmethod
     def confusion_matrix(self, x, y):
         """
         Optional metric to evaluate trained model

@@ -21,7 +21,7 @@ It is saved in 'data/' folder under the root of this project.
 python3 app.py
 ```
 
-The above command will host the app on 127.0.0.1:5000. Please check it out as we have an encouraging message for all our viewers.
+The above command will host the app on http://127.0.0.1:5000. Please check it out as we have an encouraging message for all our viewers.
 
 
 ### How to train

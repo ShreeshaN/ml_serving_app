@@ -13,7 +13,8 @@ Description: This is an abstract parent class for any ML classifier we write. An
 
 from abc import ABC, abstractmethod
 import pickle
-from pl_src.utils.string_constants import StringConstants
+import os
+from pl_src.utils.constants import StringConstants
 
 
 class MLModel(ABC):
@@ -71,7 +72,9 @@ class MLModel(ABC):
         """
         if path is None:
             raise Exception(StringConstants.FILEPATH_EMPTY)
-        return pickle.load(open(path))
+        if not os.path.exists(path):
+            raise Exception(StringConstants.MODEL_NOT_FOUND)
+        return pickle.load(open(path, 'rb'))
 
     @abstractmethod
     def cost_fn(self, x, y):

@@ -17,7 +17,7 @@ from pl_src.service_layer.train_service_layer import train_decision_tree_service
 train_handler = Blueprint('train_handler', __name__)
 
 
-@train_handler.route('/train')
+@train_handler.route('/train_decision_tree')
 def train_decision_tree():
     """
     This method acts as a REST end point to train a decision tree. At this point, it is hard-coded to use IRIS dataset.

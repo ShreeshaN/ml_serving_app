@@ -5,7 +5,7 @@
 @version: v0.0.1
 @system name: badgod
 Description: This file acts as a Rest end point layer, basically a controller. It will expose all the Rest end points
-                required to train a ML classifier or a neural network.
+                required to train an ML classifier or a neural network.
                 Suppose we need to train and expose a new model, we do it here
 
 ..todo::
@@ -14,13 +14,13 @@ Description: This file acts as a Rest end point layer, basically a controller. I
 from flask import Blueprint
 from pl_src.service_layer.train_service_layer import train_decision_tree_service
 
-train_controller = Blueprint('train_controller', __name__)
+train_handler = Blueprint('train_handler', __name__)
 
 
-@train_controller.route('/train')
+@train_handler.route('/train')
 def train_decision_tree():
     """
     This method acts as a REST end point to train a decision tree. At this point, it is hard-coded to use IRIS dataset.
     :return: A string message indicating the result of training.
     """
-    train_decision_tree_service()
+    return train_decision_tree_service()

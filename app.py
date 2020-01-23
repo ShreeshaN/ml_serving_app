@@ -13,10 +13,16 @@ Description: Start point of this serving app. Run this file to host this app on 
 """
 
 from flask import Flask
-from pl_src.controllers import train_controller
+from pl_src.utils.log_module import LogSetup
+from pl_src.controllers.train_controller import train_handler
+import os
 
 app = Flask(__name__)
-app.register_blueprint(train_controller)
+app.register_blueprint(train_handler)
+app.config["LOG_TYPE"] = os.environ.get("LOG_TYPE", "stream")
+app.config["LOG_LEVEL"] = os.environ.get("LOG_LEVEL", "INFO")
+logs = LogSetup()
+logs.init_app(app)
 
 
 @app.route('/')

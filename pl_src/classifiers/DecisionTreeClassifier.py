@@ -11,6 +11,8 @@ Description: Decision Tree classifier
 """
 
 from pl_src.classifiers.MLModel import MLModel
+from sklearn import tree
+from pl_src.utils.string_constants import StringConstants
 
 
 class DecisionTreeClassifier(MLModel):
@@ -27,9 +29,11 @@ class DecisionTreeClassifier(MLModel):
         Train part of our algorithm
         :param x: Input data
         :param y: Target labels
-        :return:
+        :return: A string message indicating the result of training.
         """
-        pass
+        classifier = tree.DecisionTreeClassifier()
+        classifier.fit(x, y)
+        return StringConstants.TRAIN_SUCCESSFUL
 
     def evaluate(self, x, y):
         """

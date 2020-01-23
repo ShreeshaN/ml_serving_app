@@ -12,6 +12,8 @@ Description: This is an abstract parent class for any ML classifier we write. An
 """
 
 from abc import ABC, abstractmethod
+import pickle
+from pl_src.utils.string_constants import StringConstants
 
 
 class MLModel(ABC):
@@ -51,6 +53,26 @@ class MLModel(ABC):
         """
         pass
 
+    def save(self, path):
+        """
+        Save your trained model using this method.
+        :param path: Path of the file system where model has to be saved
+        :return: None
+        """
+        if path is None:
+            raise Exception(StringConstants.FILEPATH_EMPTY)
+        pickle.dump(self, open(path, 'wb'))
+
+    def restore(self, path):
+        """
+        Restore a already trained model
+        :param path: Path of the saved model
+        :return: Restored Model
+        """
+        if path is None:
+            raise Exception(StringConstants.FILEPATH_EMPTY)
+        return pickle.load(open(path))
+
     @abstractmethod
     def cost_fn(self, x, y):
         """
@@ -68,15 +90,5 @@ class MLModel(ABC):
         :param x: Input data. The number of features should match the features used in training
         :param y: target labels
         :return: Metric value
-        """
-        pass
-
-    @abstractmethod
-    def confusion_matrix(self, x, y):
-        """
-        Optional metric to evaluate trained model
-        :param x: Input data. The number of features should match the features used in training
-        :param y: target labels
-        :return: Confusion Matrix
         """
         pass

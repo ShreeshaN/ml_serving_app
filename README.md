@@ -36,7 +36,7 @@ After hitting the above URL, a decision tree is fit to IRIS data and is saved.
 It is now ready for evaluation and serving purpose.
 
 Send a post request to the below URL with a JSON body containing the data for which prediction is required
-```
+```http request
 http://127.0.0.1:5000/serve_decision_tree
 Method: POST
 Body: {"data":[0.1,1.1,0.4,0.8]}

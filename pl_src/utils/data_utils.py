@@ -68,6 +68,13 @@ def convert_label_to_onehot(labels):
 
 
 def convert_onehot_to_label(onehot):
+    """
+    Converts onehot vector back to its original labels
+    :param onehot: Onehot vectors
+    :return: Original string labels
+    """
+    if onehot is None or len(onehot) == 0:
+        raise Exception(StringConstants.DATA_HAS_NO_CONTENT)
     config = ModelConstants.ONEHOT_CONFIG
     if len(onehot) == 1:
         return config[np.where(onehot[0] == 1)[0][0]]

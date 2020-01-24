@@ -11,7 +11,6 @@ Description: This is the service layer of our app, where all the business logic 
 
 """
 
-from pl_src.utils.constants import StringConstants
 from pl_src.classifiers.DecisionTreeClassifier import DecisionTreeClassifier
 from pl_src.utils.data_utils import data_prep, convert_onehot_to_label
 from pl_src.utils.constants import StringConstants
@@ -20,7 +19,6 @@ import numpy as np
 
 # Creating this variable during app start-up. A trained model is loaded upon first serve request, then kept in memory
 model = None
-print('Model placeholder initialised')
 
 
 def serve_decision_tree_service(test_data):

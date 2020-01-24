@@ -43,6 +43,14 @@ class DecisionTreeClassifier(MLModel):
         self.classifier.fit(x, y)
         return StringConstants.TRAIN_SUCCESSFUL
 
+    def predict(self, x):
+        """
+        Used to predict the results using the trained model.
+        :param x: Input features. The number of features should match the features used in training
+        :return: Predicted label
+        """
+        return self.classifier.predict(x)
+
     def evaluate(self, x, y):
         """
         This method is to evaluate model on unseen data. To calculate validation accuracy.
@@ -51,14 +59,6 @@ class DecisionTreeClassifier(MLModel):
         :return:
         """
         pass
-
-    def predict(self, x):
-        """
-        Used to predict the results using the trained model.
-        :param x: Input features. The number of features should match the features used in training
-        :return: Predicted label
-        """
-        return self.classifier.predict(x)
 
     def cost_fn(self, x, y):
         """

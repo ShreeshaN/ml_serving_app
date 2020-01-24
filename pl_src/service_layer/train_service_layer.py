@@ -15,7 +15,6 @@ from pl_src.classifiers.DecisionTreeClassifier import DecisionTreeClassifier
 from pl_src.utils.data_utils import read_csv, data_prep, convert_label_to_onehot
 from pl_src.utils.constants import StringConstants, ModelConstants
 import os
-import logging
 from flask import current_app
 
 project_basepath = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))

@@ -31,8 +31,4 @@ def serve_decision_tree():
     test_data = request.get_json(force=True)['data']
     if test_data is None:
         raise Exception(StringConstants.DATA_HAS_NO_CONTENT)
-    s = serve_decision_tree_service(test_data)
-    print('************************')
-    print(s)
-    print('************************')
-    return s
+    return serve_decision_tree_service(test_data)
